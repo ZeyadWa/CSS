@@ -1,0 +1,421 @@
+body
+{
+    background-color: #2e2e2e;
+    color: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 
+    (1) pseudo classes 
+        - ex: hover, visited, checked
+*/
+
+.one
+{
+    background-color: red;
+    color: #fff;
+}
+
+.two
+{
+    background-color: #eee;
+    width: 100px;
+    height: 100px;
+}
+
+a
+{
+    color: green;
+    text-decoration: none;
+}
+
+a:hover
+{
+    color: red;
+}
+
+a:visited
+{
+    color: purple;
+}
+
+.ch:checked + label
+{
+    color: red;
+}
+
+/* Search for the empty div and do the changes bellow */
+/* div:empty
+{
+    border: 5px solid red;
+} */
+
+/* Search for anything empty and do the changes bellow */
+
+/* :empty
+{
+    border: 5px solid blue;
+} */
+
+.in:focus
+{
+    border: 5px solid green;
+    outline: none;
+}
+
+/*
+    (2) pseudo elements:
+        - Ex: first-letter, first-line, selection ( When selecting elements )
+*/
+.lorem::first-letter
+{
+    background-color: rgb(0, 200, 255);
+    display: inline-block;
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.lorem2::first-line
+{
+    color: rgb(0, 200, 255);
+}
+
+.lorem3::selection
+{
+    background-color: gray;
+    color: orange;
+}
+
+/*
+    (3) pseudo elements:
+        -Ex: Before, After, Content
+*/
+
+.parent
+{
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+
+.user
+{
+    font-size: 47px;
+    background-color: gray;
+    width: 50px;
+    height: 55.5px;
+    padding: 10px;
+    text-align: center;
+    margin-right: 20px;
+    float: left;
+}
+
+.letter
+{
+    background-color: gray;
+    width: 600px;
+    height: 55.5;
+    padding: 10px;
+    float: left;
+    margin-bottom: 5px;
+}
+
+/* How to make a vertical line on an element */
+
+.letter
+{
+    position: relative;
+}
+
+.letter .pipeline
+{
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    right: -10px;
+    top: 0;
+    background-color: red;
+}
+
+/*
+    How to do it using Before & after
+    ** You must use content: '' **
+*/
+.letter2
+{
+    background-color: gray;
+    width: 600px;
+    height: 55.5;
+    padding: 10px;
+    float: left;
+    margin-bottom: 5px;
+}
+
+.letter2
+{
+    position: relative;
+}
+
+.letter2::after
+{
+    content: '';
+    position: absolute;
+    width: 5px;
+    height: 100%;
+    right: -10px;
+    top: 0;
+    background-color: red;
+}
+
+.letter2::before
+{
+    content: "";
+    background-color: red;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: 28px;
+    left: -15px;
+}
+
+/*
+    (4) pseudo element
+    How to Edit an automatic counter
+    How to deal with an attribute
+*/
+
+.parent
+{
+    counter-increment: user-counter;
+}
+
+.letter3
+{
+    background-color: gray;
+    width: 600px;
+    height: 55.5;
+    padding: 10px;
+    float: left;
+    margin-bottom: 5px;
+}
+
+.letter3
+{
+    position: relative;
+}
+
+.letter3::after
+{
+    content: attr(end);
+    background-color: red;
+}
+
+.letter3::before
+{
+    content: counter(user-counter);
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    font-weight: bold;
+    top: 50%;
+    margin-top: -10px;
+    background-color: rgb(0, 100, 100);
+    text-align: center;
+    padding: 3px;
+    left: -17px;
+}
+
+ul
+{
+    list-style: none;
+}
+
+ul li::before
+{
+    content: "*";
+}
+
+/*
+    (5) Vendors Prefixes 
+        - Chrome 
+        - Safari
+        - Firefox
+        - IE, Edge
+        - Opera
+    
+    [1] New CSS Feature Appeard
+    [2] Browsers Tests the Feature in Version X
+    [3] Browsers add prefix to give developers the ability to use it
+    [4] The feature is fully supported in Version Y, No need to prefix 
+
+    -webkit- => Chrome, Safari, New Opera Version
+    -moz- => Firefox
+    -ms- => Ie, Edge
+    -o- => Old version of Opera
+
+    [1] Most of Users Use Modern Browsers
+    [2] VS code addon to add the prefix "Extensions that writes prefixes automatically"
+    [3] Task Runner => Writes prefixes automatically
+    [4] You can see which broweser support which prefix
+    search for "Can I use" website
+*/
+
+.class
+{
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+    border-radius: 10px;
+}
+
+/*
+    (6) Border radius
+*/
+
+.div-1
+{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(0, 80, 53);
+    margin: 20px auto;
+    border: 2px solid #eee;
+    border-radius: 20px;
+}
+
+/*
+    (7) Box Shadows and Examples
+    box-shadow: H-Shadow | v-shadow | blur "الشفافية" | spread | color | Inset "من جوا"
+    you can add more than one shadow :)
+*/
+
+.div-2
+{
+    padding: 20px;
+    background-color: #eee;
+    margin: 20px auto;
+    width: 300px;
+    box-shadow: 0 0 10px  blueviolet, 0 0 10px  green,  0 0 10px  blue;
+}
+
+/*
+    (8) The box model and box sizing
+*/
+
+.parent-1
+{
+    width: 600px;
+    overflow: hidden;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ddd;
+}
+
+.Hi
+{
+    background: #eee;
+    width: 300px;
+    float: left;
+    color: rgb(0, 80, 53);
+}
+
+/*
+    (9) Transition 
+        - transition-duration "سرعة الانتقال من حالة ل حالة"
+        - transition-delay "الوقت الي هياخده قبل ما ينتقل من حالة ل حالة"
+        - transititon-property: properties I want to do transition on
+        - transition-timing-function: 
+            - ease ( default ) => slow then fast
+            - linear => Same speed always 
+            - ease-in
+            - ease-out
+            - ease-in-out
+*/
+.div-3
+{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(0, 80, 53);
+    border: 2px solid #eee;
+    border-radius: 20px;
+    transition-duration: 0.5s;
+    transition-delay: 0.2s;
+    transition-property: margin-top, margin-left, width;
+    transition-timing-function: ease; 
+}
+
+.div-3:hover
+{
+    width: 280px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+/*
+    The important declaration
+    after writing the css command you can write "!important"
+    !important => This property is important no one can override it :)
+*/
+
+/*
+    (11) The margin collapse
+        - [1] Only Vertical Margin Collapse!
+            - margin-bottom === margin-top => Then collapsing has happened
+        - [2] Bigger Margin wins
+            - margin-bottom > margin-top => Bottom wins
+*/
+
+.parent-2
+{
+    width: 400px;
+    height: 200px;
+    margin: auto;
+    overflow: hidden;
+    padding: 10px;
+    background-color: #eee;
+}
+
+.one-1, .two-1
+{
+    float: left;
+    width: 50%;
+    height: 100%;
+    background-color: #aaa;
+}
+
+.two-1
+{
+    background-color: #606060;
+}
+
+.up, .down
+{
+    height: 90px;
+    color: white;
+}
+.up
+{
+    background-color: var(--secondary-color);
+    margin-bottom: 20px;
+}
+
+.down
+{
+    background-color: var(--main-color);
+    margin-top: 10px;
+}
+
+/*
+    (12) CSS Variables
+        - Global Declaration => in root
+        - you can declare in anywhere lmao ( Local Declaration )
+        - then to get it => var( variable name )
+*/
+
+:root
+{
+    --main-color: rgb(0, 80, 53);
+    --secondary-color: orange;
+    --background: #2e2e2e;
+
+    --main-padding: 10px;
+}

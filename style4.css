@@ -1,0 +1,85 @@
+*
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root
+{
+    --main-color: rgb(0, 80, 53);
+    --secondary-color: orange;
+    --background: #2e2e2e;
+
+    --main-padding: 10px;
+}
+
+body
+{
+    background-color: var(--background);
+    font-family: Arial, Helvetica, sans-serif;
+    color: #eee;
+}
+
+/*
+    (60) GRID PARENT - FULL LAYOUT 
+    grid-template-areas:
+    "grid-area grid-area grid-area", "grid-area grid-area grid-area", "grid-area grid-area grid-area";
+
+    - No of double quotation marks is the number of rows in your full layout
+    - No of grid-areas is the number of columns in your full layout
+
+    Every element should have it's grid-area name
+*/
+
+ul
+{
+    list-style: none;
+}
+
+ul li
+{
+    display: inline-block;
+}
+
+.page
+{
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: 50px 1fr 50px;
+    grid-template-areas: 
+    "logo logo nav nav nav nav nav nav nav nav" 
+    "cont cont cont cont cont cont cont cont side side"
+    "foot foot foot foot foot foot foot foot foot foot";
+}
+
+h2
+{
+    grid-area: logo;
+    background-color: var(--main-color);
+}
+
+nav
+{
+    grid-area: nav;
+    background-color: var(--secondary-color);
+}
+
+section
+{
+    grid-area: cont;
+    background-color: rgb(119, 136, 136);
+}
+
+aside
+{
+    grid-area: side;
+    background-color: cadetblue;
+}
+
+footer
+{
+    grid-area: foot;
+    background-color: black;
+}

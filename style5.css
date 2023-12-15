@@ -1,0 +1,997 @@
+*
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+:root
+{
+    --main-color: rgb(0, 80, 53);
+    --secondary-color: orange;
+    --background: #2e2e2e;
+
+    --main-padding: 10px;
+}
+
+body
+{
+    background-color: var(--background);
+    font-family: Arial, Helvetica, sans-serif;
+    color: #eee;
+}
+
+/*
+    (61)Grid Child
+    
+        If you want an element to take specific number of columns from the parent container:
+        - grid-column: 
+            - [No1 / No2] => From column number1 to column number2
+            - span No => Take No of columns from where you are
+            - [No1 span No2] => Start from No1 and take No2 of columns
+        
+        If you want an element to take specific number of rows:
+        - grid-row: 
+            - [No1 / No2] => From row number1 to row number2
+            - span No => Take No of rows from where you are
+            - [No1 span No2] => Start from No1 and take No2 of rows
+*/
+
+.parent
+{
+    width: 600px;
+    background-color: #eee;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(6, auto);
+    grid-template-rows: repeat(3, auto);
+    gap: 10px 10px;
+}
+
+.parent div
+{
+    background-color: var(--main-color);
+    padding: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.parent .div-1
+{
+    background-color: var(--secondary-color);
+    grid-column: 1 / 7;
+}
+
+/*
+    (62) Grid Child
+    grid-area: [Grid Row Start] [Grid Column Start] [Grid Row End] [Grid column End]
+*/
+
+.parent-2
+{
+    width: 600px;
+    background-color: #eee;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(6, auto);
+    grid-template-rows: repeat(3, auto);
+    gap: 10px 10px;
+}
+
+.parent-2 div
+{
+    background-color: var(--main-color);
+    padding: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.parent-2 .div-2
+{
+    background-color: var(--secondary-color);
+    grid-area: 2 / 2 / 5 / 6;
+}
+
+.parent-3
+{
+    width: 600px;
+    background-color: #eee;
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: repeat(7, auto);
+    grid-template-rows: repeat(3, auto);
+    grid-template-areas: "head head head cont cont cont cont";
+    gap: 10px 10px;
+}
+
+.parent-3 div
+{
+    background-color: var(--main-color);
+    padding: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.parent-3 .div-3
+{
+    grid-area: head;
+}
+
+.parent-3 .cont-3
+{
+    background-color: var(--secondary-color);
+    grid-area: cont;
+}
+
+/*
+    (63) Grid 
+    - minmax([min-value, max-value]) => More powerful than fr
+    - auto-fill => automatic fill the thing depending on the space available
+
+    grid-template-column: repeat(auto-fill, minmax(200px, 1fr))
+    You now making your grid responsive if the user is decreasing the width of the page
+*/
+
+.parent-4
+{
+    background-color: #eee;
+    margin: 20px auto;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    display: grid;
+}
+
+.parent-4 div
+{
+    background-color: var(--main-color);
+    padding: 20px;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* (64) Grid Garden Game */
+
+/*
+    (65) 2D Transform Scale
+    - transform: 
+        - scaleX(1.5) => Element width will be 1.5 * past-width
+        - scaleX(-1) => The element will be flipped in the direction of x-axis
+        - scaleY()
+        
+        - scale([scaleX scaleY]);
+*/
+
+.shape
+{
+    background-color: #eee;
+    width: 400px;
+    height: 400px;
+    padding: 20px;
+    margin: 20px auto;
+}
+
+.shape div
+{
+    width: 90%;
+    height: 90%;
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 5%;
+    margin-left: 5%;
+
+    transform: scaleX(2) scaleY(1.2);
+    /* transform: scaleY(-1); */
+}
+
+/*
+    (66) Rotate
+    - transform: rotate();
+        - deg
+        - turn
+        - rad
+        - grad
+    
+    - Using scale() & rotate() with each other:
+    - transform: scale() rotate()
+*/
+
+.shape-2
+{
+    background-color: #eee;
+    width: 400px;
+    height: 400px;
+    padding: 20px;
+    margin: 20px auto;
+}
+
+.shape-2 div
+{
+    width: 90%;
+    height: 90%;
+    background-color: #8a5e0e;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 5%;
+    margin-left: 5%;
+
+    transform: rotate(45deg);
+    /* transform: rotate(0.25turn); */
+}
+
+.image
+{
+    overflow: hidden;
+    margin: 20px auto;
+    width: 450px;
+}
+
+.image img
+{
+    transition: 0.5s;
+}
+
+.image img:hover
+{
+    transform: scale(1.3) rotate(5deg);
+    opacity: 0.6;
+}
+
+/*
+    (67) Translate
+    - transform: translate(No1 px, No2 px)
+    No1: Move No1 pxs in the direction of x-axis
+    No2: Move No2 pxs in the direction if y-axis
+*/
+
+.shape-3
+{
+    background-color: #eee;
+    width: 400px;
+    height: 400px;
+    padding: 20px;
+    margin: 20px auto;
+}
+
+.shape-3 div
+{
+    width: 90%;
+    height: 90%;
+    background-color: #3d3d89;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 5%;
+    margin-left: 5%;
+    transition: 0.5s;
+}
+
+.shape-3 div:hover
+{
+    transform: translate(20px, 20px);
+}
+
+/*
+    (68) Skew
+    - skewX()
+    - skewY()
+    - skew()
+*/
+
+.shape-4
+{
+    background-color: #eee;
+    width: 400px;
+    height: 400px;
+    padding: 20px;
+    margin: 20px auto;
+}
+
+.shape-4 div
+{
+    width: 90%;
+    height: 90%;
+    background-color: #45723c;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 5%;
+    margin-left: 5%;
+
+    transform: skew(-20deg, -10deg);
+}
+
+.test
+{
+    position: relative;
+    margin: 20px auto;
+    width: fit-content;
+    padding: 20px;
+}
+
+.test::before
+{
+    content: '';
+    background-color: #45723c;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    transform: skewX(-10deg);
+}
+
+/*
+    (68) Matrix
+    - matrix( scaleX(), skewY(), skewX(), scaleY(), translateX(), translateY() )
+*/
+
+
+.shape-5
+{
+    background-color: #eee;
+    width: 400px;
+    height: 400px;
+    padding: 20px;
+    margin: 20px auto;
+}
+
+.shape-5 div
+{
+    width: 90%;
+    height: 90%;
+    background-color: #36747a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 5%;
+    margin-left: 5%;
+    
+    transform: matrix(1.2, 0.2679, 0, 1.2, 20, 20);
+}
+
+/*
+    (70)
+    transform-origin: 
+        - Default Values => 50% 50% 0
+    
+    2D Transform => transform-origin(X, Y)
+    3D Transform => transform-origin(X, Y, Z)
+
+    X-Axis
+        - CSS Unit[px, em, rem]
+        - %
+        - Keyword
+            - left = 0%
+            - center = 50%
+            - right = 100%
+    
+    Y-Axis
+        - CSS Unit[px, em, rem]
+        - %
+        - Keyword
+            - top = 0%
+            - center = 50%
+            - bottom = 100%
+*/
+
+.shape-6
+{
+    background-color: #eee;
+    width: 400px;
+    height: 400px;
+    padding: 20px;
+    margin: 20px auto;
+    position: relative;
+    z-index: -1;
+}
+
+.shape-6 div
+{
+    position: relative;
+    width: 90%;
+    height: 90%;
+    background-color: #36747a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 5%;
+    margin-left: 5%;
+
+    transform-origin: right 50%;
+    transform: rotate(100deg);
+    z-index: -1;
+}
+
+.shape-6 .origin
+{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #212155;
+    border-radius: 50%;
+    right: 0;
+    top: 50%;
+    transform: translate(0, 50%);
+}
+
+/*
+    (71) 3D Transform
+    - transform: rotate3d(X, Y, Z, x-axis deg, y-axis deg, z-axis deg);
+        - [X, Y, Z] values should be 1 if using it, 0 if not using it.
+    
+    (72) 
+    transform: translateZ(); لو عايز تحركه ناحيتك
+    transform: translate3d( x-axis, y-axis, z-axis );
+    بس قبل ما تستخدمها لازم تعرفه المسافة بينك وبينه كام اصلا
+
+    perspective: No px;
+        - Used in parent!!!!!!!!!!!!!
+        - No  is the distance between you and the element
+    
+    - perspective-origin:
+        - Same as transform-origin
+*/
+
+.shape-7
+{
+    background-color: #eee;
+    width: 400px;
+    height: 400px;
+    padding: 20px;
+    margin: 20px auto;
+    perspective: 500px;
+    perspective-origin: right bottom;
+}
+
+.shape-7 div
+{
+    width: 90%;
+    height: 90%;
+    background-color: var(--main-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: 5%;
+    margin-left: 5%;
+
+    transform: translate3d(0, 0, 120px);
+}
+
+/*
+    (73) Flip Product
+    - By default Back card is visible but the front card is not
+    Because the back element is after the front element in the HTML code
+    and the z-index of the second element is bigger the the first element
+
+    backface-visibility:
+        - hidden: If the element is rotated more than 90deg it will disapear
+
+    transform-style: 
+        - preserve-3d
+
+    Flip Product:
+    1. Make the card face backface-visibility: hidden
+    2. Then make the back card invisible by rotating it 180deg
+    Now the front card is the visible card
+    3. on hover: The card will rotate
+    4. Make sure that transform-style: preserve-3d
+    5. The 3d effect => perspective: 600px;
+*/
+
+.container
+{
+    width: 200px;
+    margin: 40px auto;
+    perspective: 600px;
+}
+
+.box
+{
+    position: relative;
+    width: 200px;
+    height: 200px;
+
+    transition: transform 1s;
+    transform-style: preserve-3d;
+}
+
+.box:hover
+{
+    transform: rotateY(-180deg);
+}
+
+.box .face
+{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 30px;
+
+    backface-visibility: hidden;
+}
+
+.box .front
+{
+    background-color: #3d3d89;
+}
+
+.box .back
+{
+    background-color: #36747a;
+    transform: rotateY(180deg);
+}
+
+/*
+    (74) Animation
+
+    @keyframes [animation name]
+    {
+        from{}
+        to{}
+
+        if more than 2 actions?
+        0%{}
+        30%{}
+        60%{}
+        100%{}
+        and you can change the percentage number however you want!
+    }
+
+    In the element:
+    animation-name: [animation name];
+    animation-duration: ??s;
+*/
+
+.animation
+{
+    background-color: #36747a;
+    width: 400px;
+    height: 400px;
+    padding: 20px;
+    margin: 20px auto;
+    font-weight: bold;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    animation-name: change-color;
+    animation-duration: 6s;
+}
+
+@keyframes change-color
+{
+    from
+    {
+        background-color: #36747a;
+    }
+    to
+    {
+        background-color: #14373a;
+    }
+}
+
+.animation-1
+{
+    background-color: #7a3636;
+    width: 400px;
+    height: 400px;
+    padding: 20px;
+    margin: 20px auto;
+    font-weight: bold;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    animation-name: change-color-1;
+    animation-duration: 3s;
+}
+
+@keyframes change-color-1
+{
+    0%
+    {
+        background-color: #7a3636;
+    }
+    30%
+    {
+        background-color: #687a36;
+    }
+    70%
+    {
+        background-color: #36487a;
+    }
+    100%
+    {
+        background-color: #7a364f;
+    }
+}
+
+/*
+    (75) (76) Animation
+    
+    animation-iteration-count: [No of iterations]
+        - infinite
+
+    animation-timing-function: 
+        - linear
+        - ease
+
+    animation-direction:
+        - reverse
+        - alternate
+        - alternate-reverse
+
+    animation-delay: ??s
+
+    animation-fill-mode:
+        - forwads => Keeps the style of last keyframe
+        - backwards => Keeps the style of the first keyframe
+        - both => Keeps the style of last keyframe also
+    
+    animation-play-state:
+        - paused => if you want to pause the animation 
+        - running
+    
+    animation: [animation name] [animation duration] [animation timing function] [animation direction];
+*/
+
+.animation-2
+{
+    width: 400px;
+    height: 400px;
+    background-color: #eee;
+    margin: 100px 0 100px 180px;
+
+    animation-name: change-color-1;
+    animation-duration: 6s;
+
+    border-radius: 50%;
+    border: 10px solid #7a3636;
+    border-left-color: transparent;
+
+    animation-name: spin;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+.animation-2:hover
+{
+    animation-play-state: paused;
+}
+
+@keyframes spin
+{
+    0%
+    {
+        transform: rotate(0deg);
+    }
+    100%
+    {
+        transform: rotate(360deg);
+    }
+}
+
+.animation-3
+{
+    background-color: #7a3636;
+    width: 400px;
+    height: 400px;
+    padding: 20px;
+    margin: 20px auto;
+    font-weight: bold;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    animation-name: change-color-3;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes change-color-3
+{
+    0%
+    {
+        background-color: #7a3636;
+    }
+    30%
+    {
+        background-color: #687a36;
+    }
+    70%
+    {
+        background-color: #36487a;
+    }
+    100%
+    {
+        background-color: #7a364f;
+    }
+}
+
+/*
+    (77) Animation Application
+*/
+
+.load
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px 0px;
+}
+
+.load div
+{
+    width: 20px;
+    height: 20px;
+    background-color: orchid;
+    border-radius: 50%;
+    margin: 0 5px;
+
+    animation-name: up-and-down;
+    animation-duration: 0.9s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+.load .two
+{
+    animation-delay: 0.3s;
+}
+
+.load .three
+{
+    animation-delay: 0.6s;
+}
+
+@keyframes up-and-down
+{
+    from
+    {
+        opacity: 1;
+    }
+
+    to
+    {
+        opacity: 0.2;
+        transform: translateY(-20px);
+    }
+}
+
+/*
+    (78) Selectors Reference
+
+    - * => Selects all elements in the page
+    - Element => [p, div, h2]
+    - Element otherElement => div p
+    Here I am selecting all paragraphs that are in div's
+
+    - .class-name
+    - #id
+    - parent .child
+    - .class-one.class-two => Searching for an element that has these two class names
+    - .class-name div, .class-name p => Grouping
+    - Element.class-name => Element that has this class-name
+
+    - .parent > .child => Direct Child
+
+    (79)
+    - Element + other Element => [div + p]
+    Style any paragraph that have a div directly before it
+
+    - Element ~ other Elements => [div ~ p]
+    Style all paragraphs that are after a div and have the same parent
+
+    - [Attribue] => Style All elements that has this attribute 
+    - Element[Attribute] => Style all this elements that has this attribute
+    - [Attribute = value]
+    - Element[Attribute = value]
+    - [Attribute ~= value] => Contains a word
+    - [Attribute *= value] => Contains a substring
+    - [Attribute ^= value] => Start with a string
+
+    (80)
+    - p:first-child => Style all paragraphs that are first-child in another element
+    - p:last-child =>   //      //    //     //  // last-child //   //      //
+
+    - p:first-of-type => Style the first element of the type of paragraph in his parent
+    - p:last-of-type => Style the last element of the type of paragraph in his parent
+
+    - p:only-child => Style a paragraph that is the only child in his parent 
+
+    (81)
+    - :not(Selector)
+        - Ex: p:not(first-child) => Style all paragraphs that are not first child
+
+    - :nth-child(No)
+        - Ex: p:nth-child(4) => Style the 4th child in every paragraph
+        - Ex: p:nth-child(even) => Style the childs in every paragraph that are even-numbered
+        Visit "nth-master" website
+
+    - :nth-last-child(No) => Count from the end
+    - :nth-of-type(No)
+    - :nth-last-of-type(No)
+
+    (82) I am now in the moment 10:01
+    - :root
+    - :checked
+        - Ex: input[type = "checkbox"]:checked + label
+        Style the label after the checkbox that is when it is checked only
+    
+    - :empty
+        - Ex: div:empty
+        Style the empty div
+
+    - :disabled
+        - Ex: input:disabled
+        Style the disabled input field
+    
+    - :required
+        - Ex: input:required
+        Style the required input field
+    
+    - :focus
+        - Ex: input:required
+        Style the input field when is focused
+
+    - ::selection
+        - Ex: div:required
+        Style the div field when is selected
+
+    - ::placeholder
+        - Ex: input:required
+        Style the placeholders inside the input fields
+*/
+
+/*
+    (83) Media Queries and Responsive 
+    - @media HMMM
+    {   
+        // operations
+    }
+    When HMMM do operations
+*/
+
+.div-v
+{
+    width: 400px;
+    height: 400px;
+    margin: 20px auto;
+    background-color: var(--secondary-color);
+}
+
+/*When the size of the window if between 1000px and 1400px do the operations*/
+@media (min-width: 1000px) and (max-width: 1400px)
+{
+    .div-v
+    {
+        background-color: var(--main-color);
+    }
+}
+
+/*
+    (84) Concept of width
+        - big companies width below
+    
+    - Mobile
+    - Small Screens
+    - Medium Screens
+    - Large Screens
+    - Future Updates
+
+    (85) Media Queries and Responsive - practice
+
+    - Mobile first 
+*/
+
+.container-v
+{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.container-v div
+{
+    padding: 20px;
+    background-color: var(--main-color);
+    color: #eee;
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+    width: 100%;
+}
+
+/* Mobile */
+@media (max-width: 767px)
+{
+
+}
+
+/* Small Screens */
+@media (min-width: 768px)
+{
+    .container-v div
+    {
+        width: calc(50% - 10px);
+        margin-bottom: 5px;
+    }
+}
+
+/* Medium Screens */
+@media (min-width: 992px)
+{
+    .container-v div
+    {
+        width: calc(25% - 5px);
+        margin-bottom: 5px;
+    }
+}
+
+/* Large Screens */
+@media (min-width: 1200px)
+{
+
+}
+
+/* Custom */
+@media (max-width: 1199px)
+{
+
+}
+
+/*
+    (86) Create Your Framwork
+    - Create Classes with a specific operations and you add it to what ever element you want
+*/
+
+/*
+    (87) Global Values
+    - inherit
+    - initial
+        - display: initial; => Returns the element to it's initial behavior
+    - unset 
+        - If the Attribute can be inherited => inherite
+        - If not then => initial
+    
+    - all: => All attributes become what I want
+        - unset
+        - initial
+        - inherit
+*/
+
+/*
+    (88) How to master?
+    - Elzero 4 practical designs
+    - Front-End Mentors
+    - And More Practice
+*/

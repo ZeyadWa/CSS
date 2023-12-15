@@ -1,0 +1,437 @@
+body
+{
+    height: 300vh;
+
+    /* rgb(red: 0 -> 255, green: 0 -> 255, blue: 0 -> 255, Alpha Channel) */
+    background-color: rgba(0, 0, 0, 50%); 
+    background-color: antiquewhite;
+    /* Hexadecimal */
+    background-color: #89865e;
+
+    /* 
+        1.background-repeat: 
+            - repeat(default) => repeats anyway
+            - repeat-x => repeats horizontaly
+            - repeat-y => repeats verticaly
+            - no-repeat
+        2. background-attachment:
+            - scroll(default)
+            - fixed => The background image stays with you while scrolling the page
+        3. background-position: x y;
+            - x = distance from left?
+            - y = distance from top?
+            - You can use px or word or %
+        4. background-size: width height
+            - cover => Covers the whole page even if there was some cutting in the photo
+            - contain => The default photo size even if it doesn't cover the page!
+            - Or you can choose the width and the height you want!
+    */
+    
+    /*
+    background-image: url("WhatsApp Image 2023-08-18 at 18.27.15 (3).jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center center;
+    background-position: 50px 50px;
+    background-position: 50% 50%;
+    background-size: contain;
+    */
+}
+
+.opening
+{
+    /*
+        padding: الهوامش الداخلية
+            - 4 attributes => Top Right Bottom Left 
+            - 2 attributes => ( Top & Bottom ) ( Right & Left )
+            - 1 attribute => All direction
+        padding - ( top / Right / Bottom / left ):
+
+        margin: الهوامش الخارجية
+        - auto => automatic by browser!
+        - You can use negative values!
+
+        border:
+            - width
+            - color
+            - style => solid, dotted, etc...
+        
+        outline: it's like a border but outside the element
+    */
+
+    padding: 10px 20px;
+    border: 5px solid royalblue;
+    outline: 5px solid rgb(12, 12, 84);    
+}
+
+/*
+        Block
+
+        - Take Full Width if No Width
+        - Add Line Break
+        - Respect Padding & Margin & Width & Height
+
+        Inline
+
+        - Do not respect Width & height
+        - No Line Break
+        - Respect Padding & Margin [ Just left & right ]
+        But ofcourse you can use [display] to display it as a block!
+
+        Inline-Block ( display: inline-block; )
+
+        - All elements Inlined
+        - No Line Break
+        - Respect Padding & Margin & Width & Height 
+*/
+
+.div1
+{
+    margin: 10px;
+    padding: 10px;
+    background-color: cadetblue;
+}
+
+.spn
+{
+    margin: 10px;
+    padding: 10px;
+    background-color: cadetblue;
+    /* display: block; */
+    /* display: inline-block; */
+}
+
+.invisible
+{
+    /*
+        display: none; => make it invisible
+        visibility: hidden; => make it invisible but keep the position of the element
+    */
+    display: none;
+    visibility: hidden;
+}
+
+/* Nesting */
+.div-2 p
+{
+    color: brown;
+}
+
+/*
+    1. width
+    2. min-width
+    3. max-width
+    4. width: fit-content => Width is shrinked to fit the content
+*/
+
+.lorem
+{
+    /*
+        overflow:
+            - visible ( default )
+            - hidden
+            - scroll
+            - auto ( if overflow => scroll, if not => no scroll
+        overflow-x:
+        overflow-y:
+    */
+
+    width: 150px;
+    height: 150px;
+    background-color: gray;
+    margin: 20px auto;
+    border-radius: 6px;
+    overflow: auto;
+}
+
+.name-1
+{
+    /*
+        text-shadow: (1) (2) (3) (4)
+        (1) => horizontal movement [+ve => right, -ve => left]
+        (2) => vertical movement
+        (3) => درجة الشفافية
+        (4) => Shadow color
+    */
+
+    font-size: 2rem;
+    color: black;
+    text-shadow: 1px -1px 5px red;
+    text-align: center;
+}
+
+.arb
+{
+    /*
+        direction:
+            - rtl => for arabic writing 
+            - ltr( default ) => for english writing
+    */
+    
+    text-align: center;
+    direction: rtl;
+    font-size: 2rem;
+}
+
+.text-dec
+{
+    /* 
+        text-decoration:
+            - underline
+            - overline
+            - line-through
+            - none ( usefull in links )
+
+        text-transformation:
+            - capitalize ( first letter is capital )
+            - uppercase
+            - lowercase
+
+        letter-spacing: ??px [ spaces between letters ]
+        text-indent: ??px [ space before text ]
+        line-height: 1.6 [1.6 == 160%] [ spaces between sentences "Verticaly" ]\
+        
+        width: ??px [ Spaces between words ]
+        white-space:
+            - normal
+            - nowrap [ No new lines for the same sentence ]
+
+        word-break:
+            - break-word [ Fit the sentence inside the div block ]
+
+        font-style:
+            - italic, etc...
+        
+        font-variance:
+            - small-caps [ Smaller size than normal ]
+
+        font-weight:
+            - bold
+            - normal
+    */
+    background-color: aqua;
+
+    text-decoration: underline;
+    text-decoration: none;
+
+    text-transform: uppercase;
+    text-transform: lowercase;
+    text-transform: capitalize;
+
+    letter-spacing: 2px;
+    white-space: normal;
+
+    font-variant: small-caps;
+}
+
+.text-2
+{
+    /*
+        text-overflow:
+            - ellipsis
+    */
+
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.text-2:hover
+{
+    overflow: visible;
+}
+
+.text-3
+{
+    text-align: center;
+    padding: 20px;
+    border: 2px solid blue;
+}
+
+.text-3 p 
+{
+    /*
+        inherit: inherits the attribute from the parent!
+    */
+    border: inherit;
+}
+
+.with-ser
+{
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.san-ser
+{
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*
+    What to do if you want to change the font-family?
+    1. Google fonts
+    2. choose font
+    3. provide links in the Html
+    4. apply the font in the CSS code
+*/
+
+.with-ser,
+.san-ser
+{
+    background-color: #ddd;
+    padding: 10px;
+}
+
+/*
+    CSS Units:
+        - px
+        - em => time
+        - rem => Root time [ times the Html font size ]
+        - percentage
+        - vw => View Port Width [ Depends on the page width, 1vw = 1% of the width of the page ]
+*/
+
+/*
+    Cursor:
+        - grab
+        - pointer
+*/
+
+.parent div
+{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+    background-color: #eee;
+    width: 25%;
+
+    /*
+        float: [ left, right ]
+        It's behavior is to make the element aligned but out of flow
+        so, "clear: both" could be usefull in this situation!
+    */
+
+    float: left;
+}
+
+.clear
+{
+    clear: both;
+}
+
+/*
+    Mastering CSS calculation:
+        - Content width is => 100%
+        - 6 spaces 1% => 1% * 6 => 6%
+        - 94% available space
+        - 5 Elements the width is: 94% / 5 = 18.8%
+*/
+
+.parent2 div
+{
+    padding: 10px 0;
+    text-align: center;
+    background-color: #eee;
+    float: left;
+
+    margin-left: 1%;
+    width: 18.8%;
+}
+
+/*
+    Mastering CSS calculation [px version]:
+        - Content width is => 100%
+        - 6 spaces 10px => 10px * 6 = 60px
+        - 100% - 60px available space
+        - 5 Elements the width is: (100% - 60px) / 5
+*/
+
+.parent2 div
+{
+    padding: 10px 0;
+    text-align: center;
+    background-color: #eee;
+    float: left;
+
+    margin-left: 10px;
+    width: calc((100% - 60px) / 5);
+}
+
+.opacity-test
+{
+    background-color: red;
+    padding: 20px;
+    font-size: 18px;
+    /*
+        opacity: للتحكم في شفافية العنصر بالكامل وليس الخلفية فقط
+    */
+    opacity: 0.5;
+}
+
+.one, .two, .three
+{
+    padding: 20px;
+    width: 35%;
+    text-align: center;
+    font-size: 18px;
+    color: #eee;
+    position: absolute;
+}
+
+/*
+    Position:
+        - static => position will not change [Fixed position]
+        - Relative => When given top & bottom the element postion will change depending on itself
+            - مكان العنصر هيتغير حتى لو على حساب عنصر تاني، ملوش علاقة بالعناصر التانية
+            - لو حطيته جوا حاجة مش هيعرف يطلع براها لو خليت الحاجة دي relative
+        - Absolute => When given top & bottom the element postition will change depending on the page
+            - العناصر التانية مش هتبقى معترفة ان العنصر دا موجود من اساسه
+        - fixed => Same as relative but the element will be with you while scrolling 
+        - sticky
+    
+    z-index:
+        - Whatever has the more z-index number will be seen first
+        - If two elements has the same z-index => HTML order will be effective
+*/
+
+.one
+{
+    background-color: red;
+    margin-left: 20px;
+    margin-top: 20px;
+    z-index: 3;
+}
+.two
+{
+    background-color: green;
+    margin-left: 10px;
+    margin-top: 10px;
+    z-index: 2;
+}
+
+.three
+{
+    background-color: blue;
+    z-index: 1;
+}
+
+ul
+{
+    list-style: none;
+    padding-left: 0;
+    margin: 10px;
+}
+
+table
+{
+    width: 100%;
+    border: 1px solid #a7a6a6;
+    border-spacing: 1px;
+}
+
+table td
+{
+    padding: 10px;
+    border: 1px solid #a7a6a6;
+    background-color: #ccc;
+}

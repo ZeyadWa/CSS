@@ -1,0 +1,309 @@
+*
+{
+    box-sizing: border-box;
+}
+
+:root
+{
+    --main-color: rgb(0, 80, 53);
+    --secondary-color: orange;
+    --background: #2e2e2e;
+
+    --main-padding: 10px;
+}
+
+body
+{
+    background-color: var(--background);
+    font-family: Arial, Helvetica, sans-serif;
+    color: #eee;
+
+}
+
+/*
+    (46) Flex Box - Parent
+
+    [PARENT ELEMENTS]:
+        - display: flex
+        - display: flex = overflow: hidden + float: left;
+
+        - flex-direction: 
+            - row ( default value )
+            - row-reverse
+            - column
+            - column-reverse
+
+        - flex-wrap:
+            - nowrap( default ) => don't go to the next line
+            - wrap => you can break to the next line if exceeding the width
+            - wrap-reverse => reversing the wrap
+
+        - flex-flow: [flex direction] + [flex wrap]
+
+        (47)
+        - justify-content: ( Horizontally )
+            - flex-start ( default ) => وزع العناصر بتاعتك في بداية الفليكس بوكس
+            - flex-end => وزع العناصر بتاعتك في نهاية الفليكس بوكس
+            - center => حط المحتوى ف النص
+            - space-between => بيحطلك المساحة الباقية كمسافة بين العناصر بالتساوي
+            - space-around => المساحةالباقية كمسافة قبل كل عنصر
+            - space-evenly => المساحة الباقية قبل وبعد كل عنصر
+
+        (48)
+        align-items: ( vertically )
+            - stretch ( default ) => Elements will stretch to fit the content
+            - flex-start => Same as above
+            - flex-end => Same as above
+            - center => // // //
+
+        (49) 
+        align-content: does what align-items does but with the whole content
+            - Same attributes of align-items and justify-content but it deals with the content
+            - SPACES WILL BE WITH IN THE CONTENT
+*/
+
+.flex
+{
+    width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #eee;
+
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+}
+
+.flex div
+{
+    width: 25%;
+    padding: 20px;
+    background-color: var(--main-color);
+    text-align: center;
+}
+
+.float
+{
+    overflow: hidden;
+    width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #eee;
+}
+
+.float div
+{
+    float: left;
+    width: calc(100% / 3);
+    padding: 20px;
+    background-color: var(--main-color);
+    text-align: center;
+}
+
+/*
+    (50) (51) (52)Flex Box - Child
+    flex-grow: bigger number you put to it bigger size elements will be until they fell the box
+        - 0 = default value
+    flex-shrink: 
+        - 1 = default value
+    order: 
+        - 0 = default value
+        You can change the order of a specific element between the elements
+    flex-basis:
+        - auto = default value
+        Same as width but the difference is that flex-basis is more responsive
+        if the flex-direction is = row then flex basis is horizontal width
+        if the flex-direction is column then flex basis is vertical
+        it will be usefull if you want to design your app to be responsive with mobile also
+
+    flex: [Flex Grow] [Flex  Shrink] [Flex Basis]
+
+    align-self: Same as align-items but for specific you can use for specific elements
+        - flex-start
+        - flex-end
+        - center
+    
+    
+    Games you want to play to understand flex box:
+        - flexboxfroggy (53)
+        - flexbox zombies
+*/
+
+.flex-2
+{
+    display: flex;
+    background-color: #eee;
+    margin: 20px auto;
+    padding: 20px;
+    width: 600px;
+}
+
+.flex-2 div
+{
+    background-color: var(--main-color);
+    width: 80px;
+    text-align: center;
+    padding: 20px;
+    margin-right: 5px;
+    flex-grow: 1;
+}
+
+/*
+    (54) Filters:
+        - grayscale() => make the img gray
+        - blur() => blur the img
+        - invert(0% -> 100%)s
+*/
+
+.dog-container
+{
+    display: flex;
+    justify-content: center;
+}
+
+.dog
+{
+    transition: 0.3s;
+    filter: grayscale(100%);
+}
+
+.dog:hover
+{
+    filter: grayscale(0);
+}
+
+/*
+    (55) Gradients:
+    - linear-gradient( Direction || Angle, Color stop 1, Color stop 2, ... )
+        - Direction:
+            - to top      0 deg
+            - to right   90 deg
+            - to down   180 deg
+            - to left   270 deg
+*/
+
+.div-1-container
+{
+    display: flex;
+    justify-content: center;
+}
+
+.div-1
+{
+    background-image: linear-gradient(to right, blue, purple);
+    width: 600px;
+    height: 200px;
+}
+
+.div-2
+{
+    width: 600px;
+    height: 200px;
+    background-color: #eee;
+    margin: 40px auto;
+    position: relative;
+    padding: 10px;
+}
+
+.div-2::before
+{
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: 0px;
+    width: 100%;
+    height: 5px;
+    background-image: 
+    linear-gradient(
+    to right,
+    #2980b9 20%, 
+    #27ae60 20%, 
+    #27ae60 40%,
+    #d35400 40%, 
+    #d35400 60%,
+    #8e44ad 60%, 
+    #8e44ad 80%,
+    #c0392b 80%
+    );
+}
+
+/*
+    (56) Pointer Events
+    - pointer-events: none; --> You can't do any events on the element!
+*/
+
+.twit
+{
+    pointer-events: none;
+}
+
+/*
+    (57) (58) (59) Grid PARENT
+    - display: grid;
+    - grid-template-columns: [Number of columns In] => [px, %, auto, fraction, repeat(No of columns, width), and you can mix]
+    - grid-template-rows: [Number of rows height in] => [px, %, auto, fraction, repeat(No of columns, width), and you can mix]
+
+    - row-gap: ??px;
+    - column-gap: ??px;
+    - gap: [row-gap] [column-gap]: ??px;
+
+    -justify-content: You can't use it unless there is still space in the parent element ( Watchout if you using fraction )
+        - flex-end
+        - flex-start
+        - center
+        - space-between
+        - space-around
+        - space-evenly
+
+    - align-items
+        - flex-end
+        - flex-start
+        - center
+        - space-between
+        - space-around
+        - space-evenly
+    
+    - align-content
+        - flex-end
+        - flex-start
+        - center
+        - space-between
+        - space-around
+        - space-evenly
+
+    Difference between fraction and auto:
+    - auto 
+        - depends on what's inside it
+        - It doesn't take all remaining space unless you didn't anything like justify-content, etc..
+    - fraction:
+        - doesn't care about what's inside it ( This is recommended to use )
+        - It takes all the space remaining and use it
+*/
+
+.div-3-container
+{
+    margin: 20px auto;
+    width: 700px;
+    height: 500px;
+    background-color: #eee;
+    display: grid;
+
+    grid-template-columns: repeat(3, auto); 
+    grid-template-rows: repeat(3, auto); 
+    gap: 10px 10px;
+
+    /* If I had used repeat(3, 1fr) here I couldn't have used anything below because there is no space remaining */
+    justify-content: space-between;
+    align-content: center;
+}
+
+.div-3-container div
+{
+    font-size: 30px;
+    text-align: center;
+    padding: 20px;
+    background-color: var(--main-color);
+}
